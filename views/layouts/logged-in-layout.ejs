@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>SimpleNotes</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <style>
+        body {
+            padding-top:80px;
+            word-wrap:break-word;
+        }
+
+        .well {
+            background-color: #f4f4f4;
+            border: 1px solid #C8C8C8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Notes</h1>
+        <span>Welcome <b><%= user.email %></b></span>
+        <a href="/logout" class="btn btn-default btn-sm"><span class="fa fa-unlock"></span> Logout</a>
+    </div>
+
+    <%- body %>
+
+</div>
+</body>
+</html>

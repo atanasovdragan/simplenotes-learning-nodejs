@@ -1,0 +1,46 @@
+<% layout('layouts/logged-in-layout') %>
+<div class="row">
+    <div class="col-sm-12">
+        <a href="/notes/create" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span> Create Note</a>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <% if (success.length > 0) { %>
+            <div class="alert alert-success"><%= success %></div>
+        <% } %>
+
+        <% if (error.length > 0) { %>
+            <div class="alert alert-success"><%= error %></div>
+        <% } %>
+        <% if (notes.length > 0) { %>
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Note</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <% for (var i = 0; i < notes.length; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= notes[i].title %></td>
+                        <td><%= notes[i].text %></td>
+                        <td>
+                            <a href="/notes/<%= notes[i]._id %>/edit" class="btn btn-info btn-sm"><span class="fa fa-pencil"></span> Edit</a>
+                        </td>
+                        <td>
+                            <form action="/notes/<%= notes[i]._id %>/delete" method="post">
+                                <button type="submit" class="btn btn-danger btn-sm delete-note" onClick="return confirm('Are you absolutely sure you want to delete?')"><span class="fa fa-times"></span> Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        <% } else { %>
+            <p class="text-center">No records</p>
+        <% } %>
+    </div>
+</div>

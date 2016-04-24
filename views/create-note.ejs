@@ -1,0 +1,29 @@
+<% layout('layouts/logged-in-layout') %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3>Create Note</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+            <% if (validation_errors.length > 0) { %>
+                <% for (var i = 0; i < validation_errors.length; i++) { %>
+                    <div class="alert alert-danger"><%= validation_errors[i].msg %></div>
+                <% } %>
+            <% } %>
+            <form action="/notes/create" method="post">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="title">
+                </div>
+                <div class="form-group">
+                    <label>Text</label>
+                    <textarea rows="6" name="text" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg"><span class="fa fa-arrow-right"></span> Submit</button>
+                <a href="/notes" class="btn btn-default btn-lg"><span class="fa fa-ban"></span> Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
